@@ -11,38 +11,37 @@ import { Bounce, toast } from "react-toastify";
 function IdCard({ user, contentImage }) {
   const idCardRef = useRef(null);
   const [isGenerating, setIsGenerating] = useState(false);
-
   const handleDownload = async () => {
     setIsGenerating(true);
     console.log("contentImage", contentImage);
-
+  
     const inputData = idCardRef.current;
-
+  
     try {
       const canvas = await html2canvas(inputData, {
         scale: 15, // Reduce scale to lower size
         letterRendering: true,
       });
-
+  
       const imageData = canvas.toDataURL("image/jpeg", 0.5); // Using JPEG format and reduced quality to 0.5
-
+  
       const pdf = new jsPDF({
         orientation: "portrait",
         unit: "px",
         format: "a4",
       });
-
+  
       const width = pdf.internal.pageSize.getWidth();
       const height = (canvas.height * width) / canvas.width;
-
-      pdf.addImage(imageData, "JPEG", 0, 0, width, height);
-
-      // Add clickable link at the bottom
-      pdf.textWithLink('https://registration-form-sir-rizwan.vercel.app/payment', 10, height - 20, { url: 'https://registration-form-sir-rizwan.vercel.app/payment' });
   
-
+      pdf.addImage(imageData, "JPEG", 0, 0, width, height);
+  
+      // Add clickable link at the bottom
+      const linkYPosition = height - 20; // Adjust as per your layout
+      pdf.textWithLink('https://admissionform-six.vercel.app/payment', 10, linkYPosition, { url: 'https://admissionform-six.vercel.app/payment' });
+  
       pdf.save(`Student_${user.rollNo}.pdf`);
-
+  
       setIsGenerating(false);
       toast.success('Downloaded Successfully!', {
         position: "top-right",
@@ -71,6 +70,7 @@ function IdCard({ user, contentImage }) {
       });
     }
   };
+  
 
   return (
     <div>
@@ -139,7 +139,7 @@ function IdCard({ user, contentImage }) {
   <div className="mt-2 py-1 px-3 text-xs text-gray-600">
     <p className="text-center text-sm font-semibold font-serif text-[#007076] mb-1">PAYMENT METHOD</p>
 
-    <p className="text-[9px] font-semibold text-[#007076] mb-1 inline-block border-b border-[#007076] leading-tight">Bank Details:</p>
+    <p className="text-[9px] font-semibold text-[#007076] mb-1 inline-block border-b border-[#007076] leading-tight">Bank abc Details:</p>
     <p className="text-[7px] text-gray-700 mb-[-5px]"><span className="font-semibold text-[#007076]">Bank Name: </span>MCB Islamic</p>
     <p className="text-[7px] text-gray-700 mb-[-5px]"><span className="font-semibold text-[#007076]">Account Title: </span>Muhammad Rizwan</p>
     <p className="text-[7px] text-gray-700"><span className="font-semibold text-[#007076]">Account Number: </span>1321004689390001</p>
@@ -150,7 +150,7 @@ function IdCard({ user, contentImage }) {
 
     <p className="text-[9px] font-semibold text-[#007076] mt-2 mb-1 inline-block border-b border-[#007076] leading-tight">Payment Verification Link:</p><br/>
     <p className="text-[6px] text-blue-600 underline leading-tight inline-block">
-  https://registration-form-sir-rizwan.vercel.app/payment
+    https://admissionform-six.vercel.app/payment
 </p>
 
     <p className="text-[7px] text-gray-700 leading-tight mt-3">
