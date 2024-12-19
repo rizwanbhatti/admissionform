@@ -7,18 +7,18 @@ import { Bounce, toast } from 'react-toastify';
 
 const OtherVerificationButton = ({ id, userOtherStatus }) => {
   const [otherButtonText, setOtherButtonText] = useState("Pending");
-  const [otherButtonColor, setOtherButtonColor] = useState("blue");
+  const [otherButtonColor, setOtherButtonColor] = useState("Grey");
   const [otherStatus,setOtherStatus] = useState(userOtherStatus)
 
   useEffect(() => {
 
     setOtherStatus(userOtherStatus)
     if(userOtherStatus === "Pending"){
-      setOtherButtonColor("blue")
+      setOtherButtonColor("Grey")
       setOtherButtonText("Pending")
     }
     else if(userOtherStatus === "Enrolled"){
-      setOtherButtonColor("yellow")
+      setOtherButtonColor("Blue")
       setOtherButtonText("Enrolled")
     }
     else if(userOtherStatus === "Completed"){
@@ -103,8 +103,8 @@ const OtherVerificationButton = ({ id, userOtherStatus }) => {
     setOtherButtonText(newOtherStatus === 'Pending' ? 'Pending' : 
         newOtherStatus === 'Enrolled' ? 'Enrolled' : 
         newOtherStatus === 'Completed' ? 'Completed' : '');
-    setOtherButtonColor(newOtherStatus === 'Pending' ? 'blue' : 
-        newOtherStatus === 'Enrolled' ? 'yellow' : 
+    setOtherButtonColor(newOtherStatus === 'Pending' ? 'Grey' : 
+        newOtherStatus === 'Enrolled' ? 'Blue' : 
         newOtherStatus === 'Completed' ? 'green' : 
         '');
 

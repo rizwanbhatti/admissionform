@@ -72,7 +72,7 @@
 //     const newStatus = status === 'verified' ? 'un-verified' : 'verified';
 //     setStatus(newStatus);
 //     setButtonText(newStatus === 'verified' ? 'Verified' : 'Un-verified');
-//     setButtonColor(newStatus === 'verified' ? 'green' : 'red');
+//     setButtonColor(newStatus === 'verified' ? 'green' : 'Orange');
 
 //     // Call updateUser function to update user data
 //     updateUser(id, newStatus);
@@ -109,11 +109,11 @@ const VerificationButton = ({ id, userStatus }) => {
       setButtonText("Verified")
     }
     else{
-      setButtonColor("red")
+      setButtonColor("Orange")
       setButtonText("Un-verified")
     }
  // setButtonText(status === 'verified' ? 'Verified' : 'Un-verified');
-    // setButtonColor(status === 'verified' ? 'green' : 'red');
+    // setButtonColor(status === 'verified' ? 'green' : 'Orange');
   }, [userStatus]);
 
   const updateUserStatus = async (id, newStatus) => {
@@ -142,7 +142,7 @@ const VerificationButton = ({ id, userStatus }) => {
           });
         console.log(data.result);
 // setButtonText(newStatus === 'verified' ? 'Verified' : 'Un-verified');
-// setButtonColor(newStatus === 'verified' ? 'green' : 'red');
+// setButtonColor(newStatus === 'verified' ? 'green' : 'Orange');
         // Optionally, you can perform any additional actions upon successful status update
       } else {
         console.error('Error updating user status:', data.error);
@@ -184,7 +184,7 @@ const VerificationButton = ({ id, userStatus }) => {
     console.log("status-->",status)
     setStatus(newStatus);
     setButtonText(newStatus === 'Verified' ? 'Verified' : 'Un-Verified');
-    setButtonColor(newStatus === 'Verified' ? 'green' : 'red');
+    setButtonColor(newStatus === 'Verified' ? 'green' : 'Orange');
 
     // Call updateUser function to update user data
     updateUserStatus(id, newStatus);
